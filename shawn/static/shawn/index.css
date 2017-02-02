@@ -1,0 +1,24 @@
+h1 {
+	padding: 10%;
+	padding-bottom:0;
+	text-align: center;
+	color: black; 
+	font-family: arial;
+}
+
+#aboutme {
+	text-align: center;
+	color: black;
+	font-family: arial;
+}
+
+#blog {
+	text-align: center;
+	color: black;
+	font-family: arial;
+}
+
+body {	
+	background-size:cover;
+	background-image:url(background1.jpg);
+}

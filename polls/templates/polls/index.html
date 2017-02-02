@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+<html>
+<head>
+    <title>{% block title %}Polls{% endblock %}</title>
+</head>
+<body>
+{% if latest_issue_list %}
+<ul>
+{% for issue in latest_issue_list %}
+#<li><a href="/polls/{{ issue.id }}/">{{ issue.issue_text }}</a></li>
+<li><a href="{% url 'polls:detail' issue.id %}">{{ issue.issue_text }}</a></li>
+{% endfor %}
+</ul>
+{% else %}
+<p>No polls are available.</p>
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<title>Result</title>
+	<body>
+		<div>
+			{% if Result %}
+				{% for detail in Result %}
+					<div><a href="Blog/{{ detail.id }}"> {{ detail.title }}</a></div>
+					<div>{{ detail.content }}</div>
+				{% endfor %}
+			{% else %}
+				<div>No blogs return</div>
+			{% endif %}
+		</div>
+	</body>
+</html>

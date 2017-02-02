@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{% load static %}
+		<link rel="stylesheet" type="text/css" href="{% static 'shawn/Blog.css' %}"></link>
+		<title>Blog</title>
+	</head>
+	<body>
+		<div id="body">
+			<div id="Search">
+				<form action="Search" method="POST">
+				{% csrf_token %}
+				Search: <input type="text" name="SearchText">					</form>
+			</div>
+			<div id="introduction">ShawnLu</div>
+			{% if BlogList %}
+			<div id="list">
+				<ol>
+				{% for detail in BlogList %}
+					<li id="title"><a href="Blog/{{ detail.id }}">{{ detail.title }}</a></li>
+				{% endfor %}
+				</ol>	
+			</div>	
+			<div id="BlogOverview">
+				{% for detail in BlogList %}
+					<ul>
+						<li id="detail">
+							<div><a href="Blog/{{ detail.id }}"> {{ detail.title }}</a></div>
+							<div>{{ detail.content }}</div>
+						</li>
+					</ul>
+				{% endfor %}
+			</div>
+			{% else %}
+				<div>No blog is available</div>
+			{% endif %}
+		</div>
+	</body>
+</html>

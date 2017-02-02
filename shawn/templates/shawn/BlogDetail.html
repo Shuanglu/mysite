@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{ BlogOverview.title }}</title>
+	</head>
+	<body>
+		<h1>{{ BlogOverview.title }}</h1>
+		<div id="content">
+			{{ BlogOverview }}
+		</div>
+		<div id="comment">
+		{% if comments %}
+			<ol>comment
+			{{ num=1 }}
+			{% if num <= {{ comment.num|wordcount }} %}
+				<li>
+					{% if comments.num == num %}
+						<ul>
+							<li>
+								{{ comments.comment }}
+							</li>	
+						<ul>
+					{% endif %}
+					{% num = num+1 %}
+				</li>
+			{% endif %}
+			</ol>
+		{% endif %}
+		</div>
+	</body>
+</html>
