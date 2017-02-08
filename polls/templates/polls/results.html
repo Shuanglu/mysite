@@ -1,7 +1,0 @@
-<h1>{{ issue.issue_text }}</h1>
-<ul>
-{% for option in issue.option_set.all %}
-    <li>{{ option.option_text }} -- {{ option.votes }} vote{{ option.votes|pluralize }}</li>
-{% endfor %}
-</ul>
-<a href="{% url 'polls:detail' issue.id %}">Vote again?</a>
