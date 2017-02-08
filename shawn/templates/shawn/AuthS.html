@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Auth</title>
+</head>
+<body>
+    <div>
+        <form action="/shawn/AuthSL" method="POST">
+            {% csrf_token %}
+            {% if errormsg %}
+                <div>Passwords are different</div>
+            {% endif %}
+            <div>User:<input type="text" name="user" /></div>
+            <div>Password:<input type="password" name="passwd" /></div>
+            <div>ConfirmPassword:<input type="password" name="cpasswd" /></div>
+            <div><input type="submit" name="signup" value="Signup" /></div>
+            <div><input type="hidden" name="Submit" /></div>
+            <div><input type="hidden" name="path" value="{{ path }}" /></div>
+        </form>
+
+    </div>
+</body>
+</html>

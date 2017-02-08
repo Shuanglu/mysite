@@ -8,9 +8,10 @@
 	<body>
 		<div id="body">
 			<div id="Search">
-				<form action="Search" method="POST">
-				{% csrf_token %}
-				Search: <input type="text" name="SearchText">					</form>
+				<form action="Search" method="GET">
+					{% csrf_token %}
+					Search: <input type="text" name="SearchText">
+				</form>
 			</div>
 			<div id="introduction">ShawnLu</div>
 			{% if BlogList %}
