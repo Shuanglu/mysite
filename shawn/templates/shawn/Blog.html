@@ -2,38 +2,34 @@
 <html>
 	<head>
 		{% load static %}
-		<link rel="stylesheet" type="text/css" href="{% static 'shawn/Blog.css' %}"></link>
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    	<link rel="stylesheet" type="text/css" href="{% static 'shawn/css/semantic.min.css' %}">
+    	<link rel="stylesheet" type="text/css" href="{% static 'shawn/css/semantic.css' %}">
+    	<script src="{% static 'shawn/js/Blog.js' %}"></script>
 		<title>Blog</title>
 	</head>
 	<body>
-		<div id="body">
-			<div id="Search">
-				<form action="Search" method="GET">
-					{% csrf_token %}
-					Search: <input type="text" name="SearchText">
-				</form>
+		<div>
+			<div class="ui category search">
+				<div class="ui icon input">
+					<input id="searchtext" class="prompt" placeholder="Search text..." type="text">
+					<div class="ui button" id="search" >Go</div>
+				</div>
 			</div>
 			<div id="introduction">ShawnLu</div>
 			{% if BlogList %}
-			<div id="list">
-				<ol>
+			<div class="ui items">
 				{% for detail in BlogList %}
-					<li id="title"><a href="Blog/{{ detail.id }}">{{ detail.title }}</a></li>
+				<div class="item">
+					<div class="content">
+						<div class="header">{{ detail.title }}</div>
+						<input value="{{ detail.id }}" id="id" type="hidden">
+						<div class="meta"><span>Description</span></div>
+						<div class="description"></div><p>{{ detail.content }}</p></div>
+						<div class="extra">Additional Details</div>
+					</div>
+				</div>
 				{% endfor %}
-				</ol>	
-			</div>	
-			<div id="BlogOverview">
-				{% for detail in BlogList %}
-					<ul>
-						<li id="detail">
-							<div><a href="Blog/{{ detail.id }}"> {{ detail.title }}</a></div>
-							<div>{{ detail.content }}</div>
-						</li>
-					</ul>
-				{% endfor %}
-			</div>
-			{% else %}
-				<div>No blog is available</div>
 			{% endif %}
 		</div>
 	</body>

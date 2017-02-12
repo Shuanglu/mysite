@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="{% static 'shawn/js/semantic.min.js' %}"></script>
+</head>
+<body>
+<i id="search" class="search icon"></i>
+				<form action="Search" method="GET">
+					{% csrf_token %}
+					Search: <input type="text" name="SearchText">
+				</form>
+</body>
+</html>
+
+
+				<ol>
+				{% for detail in BlogList %}
+					<li id="title"><a href="Blog/{{ detail.id }}">{{ detail.title }}</a></li>
+				{% endfor %}
+				</ol>
+	<div id="BlogOverview">
+				{% for detail in BlogList %}
+					<ul>
+						<li id="detail">
+							<div><a href="Blog/{{ detail.id }}"> {{ detail.title }}</a></div>
+							<div>{{ detail.content }}</div>
+						</li>
+					</ul>
+				{% endfor %}
+			</div>
+			{% else %}
+				<div>No blog is available</div>
+			{% endif %}
+		</div>
+
+window.location.href = "/shawn/Auth";
+
+$("#login").click(function(){
+        window.location.href = "/shawn/Auth";
+    });
+
+    $("#status").click(function(){
+        $.ajax({
+            type: "POST",
+            url: "/shawn/Auth",
+            data: {path:$("#path").val(), status:$(this).val()},
+            dataType: "json",
+        })
+
+        $.ajax({
+            type: "POST",
+            url: "/shawn/Auth",
+            data: {path:$("#path").val(), status:$(this).val()},
+            dataType: "json",
+            success: function (message) {
+                if (message > 0) {
+                    alert("请求已提交！我们会尽快与您取得联系");
+                }
+            },
+        });

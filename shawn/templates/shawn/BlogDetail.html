@@ -3,26 +3,27 @@
 	<head>
 		<title>{{ BlogOverview.title }}</title>
 		{% load static %}
-		<link rel="stylesheet" type="text/css" href="{% static 'shawn/BlogDetail.css' %}"></link>
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    	<link rel="stylesheet" type="text/css" href="{% static 'shawn/css/semantic.min.css' %}">
+    	<link rel="stylesheet" type="text/css" href="{% static 'shawn/css/semantic.css' %}">
+    	<script src="{% static 'shawn/js/BlogDetail.js' %}"></script>
 	</head>
 	<body>
 		<h1>{{ BlogOverview.title }}</h1>
 		<div>
-			<form action="/shawn/Auth" method="POST">
-				<div><input type="hidden" value="{{ request.path }}" name="path"/></div>
-				{% csrf_token %}
-				{% if request.user %}
-					{% if request.user.username != '' %}
-						<div>
-							<p>{{ request.user.username }}|<input type="submit" name="status" value="logout"/></p>
-						</div>
-					{% else %}
-						<div id="login"><input type="submit" name="status" value="login" />|<input type="submit" name="status" class="linkbutton" value="signup"/></div>
-					{% endif %}
+			<div><input type="hidden" value="{{ request.path }}" id="path"/></div>
+			{% csrf_token %}
+			{% if request.user %}
+				{% if request.user.username != '' %}
+					<div>
+						<p>{{ request.user.username }}|<input class="ui button" type="submit" id="status" value="logout"/></p>
+					</div>
 				{% else %}
-					<div id="login"><input type="submit" name="status"  value="login" />|<input type="submit" name="status" class="linkbutton" value="signup"/></div>
+					<div ><input class="ui button" type="submit" id="status" value="login" />|<input class="ui button" type="submit" id="status" value="signup" /></div>
 				{% endif %}
-			</form>
+			{% else %}
+				<div ><input class="ui button" type="submit" id="status" value="login"/>|<input class="ui button" type="submit" id="status" value="signup"/></div>
+			{% endif %}
 		</div>
         <div id="content">
 			{{ BlogOverview }}

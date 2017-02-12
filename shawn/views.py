@@ -4,6 +4,7 @@ from django.shortcuts import render, get_list_or_404, get_object_or_404
 from django.views import generic
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
+import json
 from django.urls import reverse
 from .models import Blog, BlogDetail
 from django.db.models import Q, Max
@@ -36,7 +37,7 @@ def BlogDetails(request, BlogId):
 		return render(request, "shawn/BlogDetail.html", {'BlogOverview': BlogOverview})
 
 def Search(request,):
-    SearchText = request.GET['SearchText']
+    SearchText = request.GET.get('text')
     Result = Blog.objects.filter(Q(title__contains=SearchText)|Q(content__contains=SearchText))
     return render(request, "shawn/Results.html", {'Result': Result})
 
@@ -76,14 +77,17 @@ def AuthSL(request,):
 
 
 
-def Auth(requst,):
-    status = requst.POST['status']
-    path = requst.POST['path']
+def Auth(request,):
+    req = json.loads(request)
+    print "1"
+    status = req.POST.get('status')
+    path = req.POST.get('path')
+    print status, path
     if status == 'logout':
-        logout(requst)
+        logout(req)
         return redirect(path)
     elif status == "login":
-        return render(requst,"shawn/AuthL.html", {'path': path})
+        return render(req,"shawn/AuthL.html", {'path': path})
     elif status == "signup":
-        return render(requst,"shawn/AuthS.html", {'path': path})
+        return render(req,"shawn/AuthS.html", {'path': path})
 

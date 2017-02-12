@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-	 <title>Shawn's Page</title>
+
+    <title>Shawn's Page</title>
 	{% load static %}
-	<link rel="stylesheet" type="text/css" href="{% static 'shawn/index.css' %}">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'shawn/css/semantic.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'shawn/css/semantic.css' %}">
+    <script src="{% static 'shawn/js/index.js' %}"></script>
 </head>
 <body>
 	<h1>Welcome to Shawn's world</h1>
-	<div>
-		<li id="aboutme"><a href="AboutMe">About me</a></li>
-		<li id="blog"><a href="Blog">Blog</a></li>
-	</div>
+    <div class="ui vertical buttons">
+        <div class="ui button" id="aboutme" >About Me</div>
+        <div class="ui button" id="blog" >Blog</div>
+    </div>
 </body>
 </html>
 
