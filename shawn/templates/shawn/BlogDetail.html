@@ -16,13 +16,13 @@
 			{% if request.user %}
 				{% if request.user.username != '' %}
 					<div>
-						<p>{{ request.user.username }}|<input class="ui button" type="submit" id="status" value="logout"/></p>
+						<p>{{ request.user.username }}|<input class="ui button" type="submit" id="logout" value="logout"/></p>
 					</div>
 				{% else %}
-					<div ><input class="ui button" type="submit" id="status" value="login" />|<input class="ui button" type="submit" id="status" value="signup" /></div>
+					<div ><input class="ui button" type="submit" id="login1" value="login" />|<input class="ui button" type="submit" id="signup1" value="signup" /></div>
 				{% endif %}
 			{% else %}
-				<div ><input class="ui button" type="submit" id="status" value="login"/>|<input class="ui button" type="submit" id="status" value="signup"/></div>
+				<div ><input class="ui button" type="submit" id="login2" value="login"/>|<input class="ui button" type="submit" id="signup2" value="signup"/></div>
 			{% endif %}
 		</div>
         <div id="content">

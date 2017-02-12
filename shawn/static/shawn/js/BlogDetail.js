@@ -1,24 +1,27 @@
 $(document).ready(function(){
-    $("#status").click(function(){
-
-        var jsondata = {
-            path:$("#path").val(),
-            status:$(this).val(),
-            /*csrfmiddlewaretoken: csrftoken,*/
-        }
-        $.ajax({
-            type: "POST",
-            url: "/shawn/Auth",
-            data: {data:JSON.stringify(jsondata)},
-            dataType: "json",
-            success: function(result){
-                alert("adsddsa");
-            },
-            error: function (data)
-            {
-                alert("5775");
-            }
-        });
-
+    $("#login1").click(function(){
+        var status = $(this).val();
+        var path = $("#path").val();
+        window.location.href = "/shawn/Auth/?status="+status+"&path="+path;
+    });
+    $("#login2").click(function(){
+        var status = $(this).val();
+        var path = $("#path").val();
+        window.location.href = "/shawn/Auth/?status="+status+"&path="+path;
+    });
+    $("#signup1").click(function(){
+        var status = $(this).val();
+        var path = $("#path").val();
+        window.location.href = "/shawn/Auth/?status="+status+"&path="+path;
+    });
+    $("#signup2").click(function(){
+        var status = $(this).val();
+        var path = $("#path").val();
+        window.location.href = "/shawn/Auth/?status="+status+"&path="+path;
+    });
+    $("#logout").click(function(){
+        var status = $(this).val();
+        var path = $("#path").val();
+        window.location.href = "/shawn/Auth/?status="+status+"&path="+path;
     });
 });

@@ -78,16 +78,17 @@ def AuthSL(request,):
 
 
 def Auth(request,):
-    req = json.loads(request)
+    #req = json.loads(request.)
     print "1"
-    status = req.POST.get('status')
-    path = req.POST.get('path')
+    status = request.GET.get('status')
+    path = request.GET.get('path')
     print status, path
     if status == 'logout':
-        logout(req)
+        logout(request)
         return redirect(path)
     elif status == "login":
-        return render(req,"shawn/AuthL.html", {'path': path})
+        #return redirect("/shawn/AuthL", {'path': path})
+        return render(request,"shawn/AuthL.html", {'path': path})
     elif status == "signup":
-        return render(req,"shawn/AuthS.html", {'path': path})
+        return render(request,"shawn/AuthS.html", {'path': path})
 
