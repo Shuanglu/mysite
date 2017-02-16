@@ -15,8 +15,8 @@ class Blog(models.Model):
 @python_2_unicode_compatible
 class BlogDetail(models.Model):
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
-    comment = models.CharField(max_length=3000)
-    num = models.IntegerField(default=0)
-    title = models.TextField(default='HelloWorld')
+    comment = models.TextField()
+    #num = models.IntegerField(default=0)
+    #title = models.TextField(default='HelloWorld')
     def __str__(self):
         return self.comment

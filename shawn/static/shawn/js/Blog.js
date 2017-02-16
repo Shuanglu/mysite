@@ -5,8 +5,10 @@ $(document).ready(function(){
     });
 
     $(".header").click(function(){
-        var id = $("#id").val();
+        var id = $(this).next().val();
+
         window.location.href = "/shawn/Blog/"+id;
+
     });
 
 });

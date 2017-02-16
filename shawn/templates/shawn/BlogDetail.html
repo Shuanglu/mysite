@@ -11,7 +11,7 @@
 	<body>
 		<h1>{{ BlogOverview.title }}</h1>
 		<div>
-			<div><input type="hidden" value="{{ request.path }}" id="path"/></div>
+			<div><input type="hidden" value="{{ request.path }}" id="path"/><input type="hidden" value="{{ BlogOverview.id}}" id="id"/></div>
 			{% csrf_token %}
 			{% if request.user %}
 				{% if request.user.username != '' %}
@@ -28,29 +28,19 @@
         <div id="content">
 			{{ BlogOverview }}
 		</div>
-		<div id="comment">
-			{% if comments %}
-				<ol>comment
-					{% for num in range %}
-						<li>
-							<div>
-								{% for comment in comments %}
-									{% if comment.num == num %}
-										<p>{{ comment.comment }}</p>
-									{% endif %}
-								{% endfor %}
-							</div>
-							<div>
-								<form action="{{ BlogOverview.id }}/comment" method="post">
-                                 {% csrf_token %}
-                                    <div>Comment: <input type="text" name="comment" /><p><input type="submit" value="submit" /></p></div>
-									<div><input type="hidden" name="num" value="{{ num }}" /></div>
-								</form>
-							</div>
-						</li>
-					{% endfor %}
-				</ol>
-			{% endif %}
+		<div class="ui comments">
+			<h3 class="ui dividing header">Comments</h3>
+			<div id="comments"></div>
+            <div class="actions">
+                <a class="reply active">Reply</a>
+            </div>
+            <form class="ui reply form">
+                <div class="field">
+                    <textarea id="text"></textarea>
+                </div>
+                <div class="ui primary submit labeled icon button" id="reply">Add Reply </div>
+            </form>
+
 		</div>
 	</body>
 </html>
